@@ -1,0 +1,85 @@
+<!--
+Inputs:
+	Comment text
+	Submit button
+
+Outputs:
+	blink:
+		Title,
+		Comments,
+		Group
+-->
+{% extends "base.html" %}
+
+{% block scripts %}
+<script>
+	$(document).ready(function() {
+		$(".note-comment").on("mouseenter", function(event) {
+			$(this).children().show();
+		});
+
+		$(".note-comment").on("mouseleave", function(event) {
+			$(this).children().hide();
+		});
+
+		$(".confirm-click").on("click", function(event) {
+			return confirm("Are you sure you wish to delete this?");
+		});
+
+		var input_toggled = false;
+		$("#switch-form").on("click", function(event) {
+			input_toggled = !input_toggled;
+
+			if(input_toggled)
+			{
+				$("#form-comment-single").hide();
+				$("#form-comment-multi").show();
+				this.className = "input-group-addon glyphicon glyphicon-align-justify";
+			}
+			else
+			{
+				$("#form-comment-single").show();
+				$("#form-comment-multi").hide();
+				this.className = "input-group-addon glyphicon glyphicon-minus";
+			}
+		});
+	});
+</script>
+{% endblock %}
+
+{% block body %}
+	<div class="row">
+		{% include "blinks/sidemenu.html" %}
+
+		<div class="col-md-6">
+			<h2>{{ blink.title }}</h2>
+			<a href="{{ blink.url }}"><img class="thumbnail media-object" width="150" height="125" src="{{ blink.image }}" alt="..."></a>
+			<h3>{{ blink.author }}</h3>
+			<p>{{ blink.description }}</p>
+
+			<h3>Notes</h3>
+
+			<ul>
+			{% for note in notes %}
+				<li class="note-comment">{{ note.note }} <a hidden href="?id={{ blink.id }}&delete_note={{ note.id }}"><span class="glyphicon glyphicon-remove"></span></a></li></p>
+			{% endfor %}
+			</ul>
+
+			<form class="form-inline" action="{% url 'blink' %}?id={{ blink.id }}" method="POST" role="form">
+				<div class="form-group">
+					{% csrf_token %}
+
+					<div class="input-group">
+						<div id="switch-form" class="input-group-addon glyphicon glyphicon-align-justify"></div>
+						<input type="text" name="comment" class="form-control" id="form-comment-single" placeholder="Super awesome comment!">
+						<textarea style="display: none;" name="comment" id="form-comment-multi" class="form-control" placeholder="Super awesome comment!"></textarea>
+					</div>
+				</div>
+				<button type="submit" class="btn btn-default">Add note</button>
+			<br>
+			<br>
+			<a class="confirm-click" href="{% url 'blinks' %}?delete_blink={{ blink.id }}" class="btn btn-default">Delete blink</a>
+		</div>
+	</div>
+
+{% endblock %}

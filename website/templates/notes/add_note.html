@@ -1,0 +1,45 @@
+<!--
+Inputs:
+	Note:
+		Title,
+		First comment,
+		Group
+		Submit button
+
+Outputs:
+	Groups
+-->
+{% extends "base.html" %}
+
+{% block body %}
+	<div class="row">
+		{% include "notes/sidemenu.html" %}
+
+		<div class="col-md-6">
+			<h2>Add note</h2>
+
+			<form action="" method="POST" role="form">
+				<div class="form-group">
+					<label for="note-title">Title</label>
+					<input type="text" class="form-control" id="note-title" placeholder="Title">
+				</div>
+						
+				<div class="form-group">
+					<label for="note-first-comment">First comment</label>
+					<textarea name="" placeholder="Super awesome comment!" id="note-first-comment" class="form-control" rows="3" required="required"></textarea>
+				</div>
+
+				<div class="form-group">
+					<label for="note-group">Group</label>
+					<select name="note-group" id="input" class="form-control">
+						<option value="food">Blinks</option>
+						<option value="exercise">Exercise</option>
+					</select>
+				</div>
+			
+				<button type="submit" class="btn btn-default">Add note</button>
+			</form>
+		</div>
+	</div>
+
+{% endblock %}

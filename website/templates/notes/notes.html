@@ -1,0 +1,36 @@
+<!--
+Sub pages:
+	Add note
+	List single note
+
+Outputs:
+	Notes
+		Note:
+			Title
+			Last 3 comments
+-->
+{% extends "base.html" %}
+
+{% block body %}
+	<div class="row">
+		{% include "notes/sidemenu.html" %}
+
+		<div class="col-md-6">
+			<h2>Notes</h2>
+			<div>
+				<h3><a href="notes/note">Food</a></h3>
+				<p>Drank milk</p>
+				<p>Ate vitamin salad</p>
+				<p>Ate a piece of meat</p>
+			</div>
+
+			<div>
+				<h3><a href="notes/note">Exercise</a></h3>
+				<p>Did pushups</p>
+				<p>Stretched a bit</p>
+				<p>Meditated</p>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

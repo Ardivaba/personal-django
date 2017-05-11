@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Personal</title>
+
+	<meta charset="utf-8">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+	{% block scripts %}
+	{% endblock %}
+</head>
+<body>
+
+	<nav class="navbar navbar-default" role="navigation">
+		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="/personal"><span class="glyphicon glyphicon-home"></span> Personal</a>
+			</div>
+	
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse navbar-ex1-collapse">
+				<ul class="nav navbar-nav">
+					<li><a href="#"><span class="glyphicon glyphicon-time"></span> Time</a></li>
+					<li><a href="/personal/tasks"><span class="glyphicon glyphicon-tasks"></span> Tasks</a></li>
+					<li><a href="/personal/blinks"><span class="glyphicon glyphicon-book"></span> Blinks</a></li>
+					<li><a href="/personal/social"><span class="glyphicon glyphicon-globe"></span> Social</a></li>
+					<li><a href="/personal/habits"><span class="glyphicon glyphicon-flash"></span> Habits</a></li>
+					<li><a href="/personal/mission"><span class="glyphicon glyphicon-eye-open"></span> Mission</a></li>
+					<li><a href="/personal/goals"><span class="glyphicon glyphicon-apple"></span> Goals</a></li>
+					<li><a href="/personal/money"><span class="glyphicon glyphicon-euro"></span> Money</a></li>
+				</ul>
+				{% if request.user.is_authenticated %}
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="sign_out">Sign Out</a></li>
+				</ul>
+				{% elif not request.user.is_authenticated %}
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="sign_in">Sign In</a></li>
+					<li><a href="register">Register</a></li>
+				</ul>
+				{% endif %}
+			</div><!-- /.navbar-collapse -->
+		</div>
+	</nav>
+
+	<div class="container">
+		{% block body %}
+		{% endblock %}
+	</div>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<nav class="navbar navbar-default  navbar-fixed-bottom" role="navigation">
+		<div class="container text-center">
+			<p class="navbar-text col-md-12 col-sm-12 col-xs-12">Personal site for <a href="#">Ardi Vaba</a></p>
+		</div>
+	</nav>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!--
+Sub pages:
+	Add blink
+	List single blink
+
+Outputs:
+	blinks
+		blink:
+			Title
+			Last 3 comments
+-->
+{% extends "base.html" %}
+
+{% block body %}
+	<div class="row">
+		{% include "blinks/sidemenu.html" %}
+		<div class="col-md-6">
+			<h2>Blinks</h2>
+			<p>Blinks are books or articles or stories that you've read.</p>
+			<br>
+			<div class="col-md-6 col-lg-12">
+				<ul class="media-list main-list">
+					{% for blink in blinks %}
+						<li class="media" style="max-height: 125px;">
+							<a class="pull-left" href="{% url 'blink' %}?id={{ blink.id }}">
+								<img class="media-object" width="150" height="125" src="{{ blink.image }}" alt="...">
+							</a>
+							<div class="media-body">
+								<h4 class="media-heading">{{ blink.title }}</h4>
+								<p>{{ blink.description }}</p>
+								<p>{{ blink.rating }}/10</p>
+								<p class="by-author"><em>{{ blink.author }}</em	></p>
+							</div>
+						</li>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

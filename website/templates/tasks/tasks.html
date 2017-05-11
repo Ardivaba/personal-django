@@ -1,0 +1,30 @@
+<!--
+Sub pages:
+	Create task
+
+Outputs:
+	Tasks
+		Task:
+			Title
+			Subgoals
+			Due date
+-->
+{% extends "base.html" %}
+</script>
+{% block body %}
+	<div class="row">
+		{% include "tasks/sidemenu.html" %}
+
+		<div class="col-md-6">
+			<h2>Tasks</h2>
+			{% for task in tasks %}
+			<div class="task">
+				<h3>{{task.title}}</h3>
+				<p>{{task.sub_tasks}}</p>
+				<a href="/personal/tasks?do_task={{task.id}}">Done</a>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+
+{% endblock %}

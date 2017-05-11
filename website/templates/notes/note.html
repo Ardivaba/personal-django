@@ -1,0 +1,36 @@
+<!--
+Inputs:
+	Comment text
+	Submit button
+
+Outputs:
+	Note:
+		Title,
+		Comments,
+		Group
+-->
+{% extends "base.html" %}
+
+{% block body %}
+	<div class="row">
+		{% include "notes/sidemenu.html" %}
+
+		<div class="col-md-6">
+			<h2>Blinks are awesome</h2>
+			<p>Super awesome comment!</p>
+			<p>Blinks make me smart</p>
+			<p>This stuff has changed my life</p>
+			<p>Feelin' good!</p>
+			<p>Stuff too good.</p>
+			<p>Yay!</p>
+
+			<form class="form-inline" action="" method="POST" role="form">
+				<div class="form-group">
+					<input type="text" class="form-control" id="form-comment" placeholder="Super awesome comment!">
+				</div>
+				<button type="submit" class="btn btn-default">Comment</button>
+			</form>
+		</div>
+	</div>
+
+{% endblock %}

@@ -1,0 +1,72 @@
+<!--
+Inputs:
+	blink:
+		Title,
+		First comment,
+		Group
+		Submit button
+
+Outputs:
+	Groups
+-->
+{% extends "base.html" %}
+
+{% block body %}
+	<div class="row">
+		{% include "blinks/sidemenu.html" %}
+
+		<div class="col-md-6">
+			<h2>Add blink</h2>
+
+			<form action="/personal/blinks/create" method="POST" role="form">
+				{% csrf_token %}
+				<div class="form-group">
+					<label for="blink-title">Title</label>
+					<input type="text" name="title" class="form-control" id="blink-title" placeholder="Title">
+				</div>
+
+				<div class="form-group">
+					<label for="blink-title">Author</label>
+					<input type="text" name="author" class="form-control" id="blink-title" placeholder="Author">
+				</div>
+						
+				<div class="form-group">
+					<label for="blink-first-description">Description</label>
+					<textarea name="description" placeholder="Short and awesome description!" id="blink-first-description" class="form-control" rows="3" required="required"></textarea>
+				</div>
+
+				<div class="form-group">
+					<label for="blink-image">Image url</label>
+					<input type="text" name="image" class="form-control" id="blink-image" placeholder="https://images.blinkist.com/images/...jpg">
+				</div>
+
+				<div class="form-group">
+					<label for="blink-url">Url</label>
+					<input type="text" name="url" class="form-control" id="blink-url" placeholder="https://app.blinkist.com/en/reader/...">
+				</div>				
+
+				<div class="form-group">
+					<label for="blink-rating">Rating</label>
+					<select name="rating" id="input" class="form-control">
+						<option value="10">10</option>
+						{% for i in "987654321" %}
+							<option>{{ i }}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div class="form-group">
+					<label for="blink-tags">Tags</label>
+					<input type="text" name="tags" class="form-control" id="blink-tags" placeholder="ideas motivation">
+				</div>
+			
+				<button type="submit" class="btn btn-default">Add blink</button>
+			</form>
+		</div>
+	</div>
+	<br>
+	<br>
+	<br>
+	<br>
+
+{% endblock %}
