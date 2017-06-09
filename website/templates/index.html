@@ -3,4 +3,8 @@
 {% block body %}
 	<h1>Personal site</h1>
 	<p>Some index page with overview...</p>
+
+	{% if not request.user.is_authenticated %}
+	<p>Please <b><a href="/personal/sign_in">sign in</a></b> to access the functionality of the website.</p> 
+	{% endif %}
 {% endblock %}

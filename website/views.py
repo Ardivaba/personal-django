@@ -45,8 +45,11 @@ def sign_in(request):
 		username = request.POST["username"]
 		password = request.POST["password"]
 
+		print("1")
 		user = authenticate(username=username, password=password)
+		print("2")
 		login(request, user)
+		print("User logged in")
 		if user is not None:
 			return HttpResponsePermanentRedirect("/personal")
 
@@ -113,9 +116,8 @@ def goals(request):
 	return render(request, "goals.html", context)
 
 def money(request):
-	print(requests.get("http://api.coindesk.com/v1/bpi/currentprice.json").json())
 	context = {
-		"btc": requests.get("http://api.coindesk.com/v1/bpi/currentprice.json").json()["bpi"]["USD"]["rate"]
+		"btc": requests.get("http://api.coindesk.com/v1/bpi/currentprice.json").json()["bpi"]["USD"]["rate"],
 	}
 	return render(request, "money.html", context)
 

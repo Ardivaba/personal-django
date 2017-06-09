@@ -31,6 +31,7 @@
 	
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse navbar-ex1-collapse">
+				{% if request.user.is_authenticated %}
 				<ul class="nav navbar-nav">
 					<li><a href="#"><span class="glyphicon glyphicon-time"></span> Time</a></li>
 					<li><a href="/personal/tasks"><span class="glyphicon glyphicon-tasks"></span> Tasks</a></li>
@@ -41,6 +42,7 @@
 					<li><a href="/personal/goals"><span class="glyphicon glyphicon-apple"></span> Goals</a></li>
 					<li><a href="/personal/money"><span class="glyphicon glyphicon-euro"></span> Money</a></li>
 				</ul>
+				{% endif %}
 				{% if request.user.is_authenticated %}
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="sign_out">Sign Out</a></li>

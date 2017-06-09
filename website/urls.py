@@ -30,5 +30,7 @@ urlpatterns = [
 	url(r"^sign_in", views.sign_in, name = "sign_in"),
 	url(r"^sign_out", views.sign_out, name = "sign_out"),
 	url(r"^register", views.register, name = "register"),
-	url(r"^create_user", views.create_user, name = "create_user")
+	url(r"^create_user", views.create_user, name = "create_user"),
+
+	url(r"r'^.*/$'", views.index, name = "index")
 ]
